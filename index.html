@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wang Shuo (王硕)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #fafaf8;
+            --color-text: #2c2c2c;
+            --color-text-secondary: #5a5a5a;
+            --color-accent: #1a5276;
+            --color-accent-light: #2980b9;
+            --color-border: #e0ddd8;
+            --color-highlight: #fef9e7;
+            --color-card-bg: #ffffff;
+            --color-tag-bg: #eef2f5;
+            --font-serif: 'Newsreader', Georgia, serif;
+            --font-sans: 'Source Sans 3', 'Segoe UI', sans-serif;
+            --max-width: 760px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.7;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* === HEADER === */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(250, 250, 248, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        nav {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-name {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--color-text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .nav-links { display: flex; gap: 24px; }
+
+        .nav-links a {
+            font-size: 0.88rem;
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-weight: 400;
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background: var(--color-accent);
+            transition: width 0.25s ease;
+        }
+
+        .nav-links a:hover { color: var(--color-accent); }
+        .nav-links a:hover::after { width: 100%; }
+
+        /* === HERO === */
+        .hero {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 60px 24px 44px;
+            display: flex;
+            gap: 44px;
+            align-items: flex-start;
+        }
+
+        .hero-avatar {
+            width: 155px;
+            height: 155px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--color-border);
+            flex-shrink: 0;
+        }
+
+        .hero-info { flex: 1; }
+
+        .hero-info h1 {
+            font-family: var(--font-serif);
+            font-size: 2.1rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 4px;
+        }
+
+        .hero-tagline {
+            font-size: 1.02rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 4px;
+            font-weight: 300;
+        }
+
+        .hero-affiliation {
+            font-size: 0.92rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 14px;
+        }
+
+        .hero-links { display: flex; gap: 12px; flex-wrap: wrap; }
+
+        .hero-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 13px;
+            font-size: 0.84rem;
+            color: var(--color-accent);
+            text-decoration: none;
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+
+        .hero-links a:hover {
+            background: var(--color-accent);
+            color: #fff;
+            border-color: var(--color-accent);
+        }
+
+        .hero-links a svg { width: 14px; height: 14px; }
+
+        /* === NEWS === */
+        .news-section {
+            max-width: var(--max-width);
+            margin: 0 auto 16px;
+            padding: 0 24px;
+        }
+
+        .news-box {
+            background: var(--color-highlight);
+            border: 1px solid #f0e6c0;
+            border-radius: 10px;
+            padding: 18px 22px;
+        }
+
+        .news-title {
+            font-family: var(--font-serif);
+            font-size: 0.98rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .news-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+
+        .news-list li {
+            font-size: 0.88rem;
+            line-height: 1.6;
+            color: var(--color-text-secondary);
+        }
+
+        .news-date {
+            font-weight: 600;
+            color: var(--color-accent);
+            margin-right: 4px;
+        }
+
+        /* === SECTIONS === */
+        section {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 44px 24px;
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: var(--color-text);
+            margin-bottom: 8px;
+            letter-spacing: -0.01em;
+        }
+
+        .section-divider {
+            width: 100%;
+            height: 1px;
+            background: var(--color-border);
+            margin-bottom: 28px;
+        }
+
+        /* === ABOUT === */
+        .about-text {
+            font-size: 0.98rem;
+            line-height: 1.85;
+        }
+
+        .about-text a {
+            color: var(--color-accent-light);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .about-text a:hover { border-bottom-color: var(--color-accent-light); }
+
+        .research-interests {
+            margin-top: 18px;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .research-interests li {
+            font-size: 0.93rem;
+            padding: 7px 14px;
+            background: var(--color-tag-bg);
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            width: fit-content;
+        }
+
+        /* === EXPERIENCE === */
+        .exp-category {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            font-weight: 500;
+            font-style: italic;
+            color: var(--color-text);
+            margin: 28px 0 16px;
+        }
+
+        .exp-category:first-of-type { margin-top: 0; }
+
+        .exp-item {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px;
+            align-items: flex-start;
+        }
+
+        .exp-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            background: var(--color-tag-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            border: 1px solid var(--color-border);
+        }
+
+        .exp-content { flex: 1; }
+
+        .exp-role {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--color-text);
+        }
+
+        .exp-org {
+            font-size: 0.9rem;
+            color: var(--color-accent);
+            font-weight: 500;
+        }
+
+        .exp-period {
+            font-size: 0.82rem;
+            color: var(--color-text-secondary);
+            margin-top: 2px;
+        }
+
+        .exp-desc {
+            font-size: 0.87rem;
+            color: var(--color-text-secondary);
+            margin-top: 4px;
+            line-height: 1.6;
+        }
+
+        /* === PUBLICATIONS === */
+        .pub-category {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            font-weight: 500;
+            font-style: italic;
+            color: var(--color-text);
+            margin: 28px 0 16px;
+        }
+
+        .pub-category:first-of-type { margin-top: 0; }
+
+        .pub-item {
+            margin-bottom: 22px;
+            padding-left: 16px;
+            border-left: 2.5px solid var(--color-border);
+            transition: border-color 0.2s;
+        }
+
+        .pub-item:hover { border-left-color: var(--color-accent); }
+
+        .pub-title {
+            font-weight: 600;
+            font-size: 0.94rem;
+            color: var(--color-text);
+            line-height: 1.5;
+        }
+
+        .pub-venue {
+            font-style: italic;
+            color: var(--color-accent);
+            font-size: 0.87rem;
+        }
+
+        .pub-authors {
+            font-size: 0.87rem;
+            color: var(--color-text-secondary);
+            margin-top: 2px;
+        }
+
+        .pub-authors .me {
+            font-weight: 700;
+            color: var(--color-text);
+            text-decoration: underline;
+            text-decoration-color: var(--color-accent-light);
+            text-underline-offset: 2px;
+        }
+
+        .pub-links { margin-top: 6px; display: flex; gap: 8px; }
+
+        .pub-links a {
+            font-size: 0.78rem;
+            color: var(--color-accent-light);
+            text-decoration: none;
+            padding: 2px 10px;
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .pub-links a:hover {
+            background: var(--color-accent);
+            color: #fff;
+            border-color: var(--color-accent);
+        }
+
+        /* === PROJECTS === */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .project-card {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 10px;
+            padding: 22px;
+            transition: all 0.25s ease;
+            cursor: default;
+        }
+
+        .project-card:hover {
+            border-color: var(--color-accent);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            transform: translateY(-2px);
+        }
+
+        .project-card h3 {
+            font-family: var(--font-serif);
+            font-size: 1.02rem;
+            font-weight: 500;
+            margin-bottom: 6px;
+        }
+
+        .project-card p {
+            font-size: 0.86rem;
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
+
+        .project-tags { margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap; }
+
+        .project-tags span {
+            font-size: 0.73rem;
+            padding: 3px 10px;
+            background: var(--color-tag-bg);
+            border-radius: 20px;
+            color: var(--color-text-secondary);
+        }
+
+        /* === FOOTER === */
+        footer {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 28px 24px 44px;
+            text-align: center;
+            font-size: 0.82rem;
+            color: var(--color-text-secondary);
+            border-top: 1px solid var(--color-border);
+        }
+
+        footer a {
+            color: var(--color-accent-light);
+            text-decoration: none;
+        }
+
+        /* === ANIMATIONS === */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(14px);
+            transition: opacity 0.55s ease, transform 0.55s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 640px) {
+            .hero {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 20px;
+                padding-top: 36px;
+            }
+
+            .hero-avatar { width: 115px; height: 115px; }
+            .hero-links { justify-content: center; }
+            .hero-info h1 { font-size: 1.7rem; }
+
+            .nav-links { gap: 14px; }
+            .nav-links a { font-size: 0.8rem; }
+
+            .projects-grid { grid-template-columns: 1fr; }
+            .research-interests li { width: 100%; }
+
+            section { padding: 32px 20px; }
+
+            .exp-item { gap: 12px; }
+            .exp-icon { width: 36px; height: 36px; font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<header>
+    <nav>
+        <a class="nav-name" href="#">Wang Shuo</a>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#publications">Publications</a>
+            <a href="#projects">Projects</a>
+        </div>
+    </nav>
+</header>
+
+<!-- HERO -->
+<div class="hero fade-in">
+    <img class="hero-avatar" src="https://cheer-shuowang.github.io/images/profile.png" alt="Wang Shuo">
+    <div class="hero-info">
+        <h1>Wang Shuo (王硕)</h1>
+        <p class="hero-tagline">Interdisciplinary Researcher · Built Environment × AI</p>
+        <p class="hero-affiliation">
+            🏫 M.S. @ <strong>National University of Singapore</strong><br>
+            🎓 M.S. in AI (Online) @ <strong>University of Colorado Boulder</strong>
+        </p>
+        <div class="hero-links">
+            <a href="mailto:shuowang@u.nus.edu">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                Email
+            </a>
+            <a href="#" target="_blank">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                CV
+            </a>
+            <a href="https://www.linkedin.com/in/shuo-wang-38038a3a3" target="_blank">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                LinkedIn
+            </a>
+            <a href="https://instagram.com/wangshuo09" target="_blank">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                Instagram
+            </a>
+            <a href="#" target="_blank">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                Google Scholar
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- NEWS -->
+<div class="news-section fade-in">
+    <div class="news-box">
+        <div class="news-title">📢 News</div>
+        <ul class="news-list">
+            <li><span class="news-date">[Feb 2026]</span> 在这里添加你的最新动态...</li>
+            <li><span class="news-date">[Jan 2026]</span> 更多动态内容...</li>
+            <li><span class="news-date">[Dec 2025]</span> 另一条新闻...</li>
+        </ul>
+    </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="fade-in">
+    <h2 class="section-title">About Me</h2>
+    <div class="section-divider"></div>
+    <div class="about-text">
+        <p>
+            Hi! I am Wang Shuo (王硕), an interdisciplinary researcher bridging the gap between the <strong>Built Environment</strong> and <strong>Artificial Intelligence</strong>. Currently, I am a Master's student at the <a href="https://www.nus.edu.sg/">National University of Singapore (NUS)</a>, while concurrently pursuing an M.S. in Artificial Intelligence (Online) at the <a href="https://www.colorado.edu/">University of Colorado Boulder</a>.
+        </p>
+        <p style="margin-top: 12px;">
+            My academic journey is rooted in the tech industry. Previously, as a Product Planner at <strong>Tencent</strong>, I witnessed firsthand how algorithms influence user behavior. Now, I leverage that industry experience to fuel my academic inquiries at the intersection of <strong>Technology, Urban Science, and Humanities</strong>.
+        </p>
+        <p style="margin-top: 16px;">My research focuses on:</p>
+        <ul class="research-interests">
+            <li>🎮 <strong>Game Studies</strong> — Digital laboratories for historical reconstruction & architectural rhetoric</li>
+            <li>🤖 <strong>AI & Society</strong> — Socio-technical impact of AI on urban planning & social safety</li>
+            <li>📊 <strong>Data Science</strong> — ML models for deconstructing complex social dynamics</li>
+        </ul>
+        <p style="margin-top: 16px; font-size: 0.93rem; color: var(--color-text-secondary);">
+            🎻 Outside of research, I enjoy traveling, playing the violin, and immersing myself in the virtual worlds of video games.
+        </p>
+    </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="fade-in">
+    <h2 class="section-title">Experience</h2>
+    <div class="section-divider"></div>
+
+    <div class="exp-category">Research Experience</div>
+
+    <div class="exp-item">
+        <div class="exp-icon">🔬</div>
+        <div class="exp-content">
+            <div class="exp-role">Research Assistant</div>
+            <div class="exp-org">HKUST(Guangzhou) — PGSC Laboratory</div>
+            <!-- <div class="exp-period">2024.xx – 2024.xx</div> -->
+            <div class="exp-desc">Constructed structured databases for sustainability policies; developed unified statistical frameworks.</div>
+        </div>
+    </div>
+
+    <div class="exp-item">
+        <div class="exp-icon">🌱</div>
+        <div class="exp-content">
+            <div class="exp-role">Research Assistant</div>
+            <div class="exp-org">CUFE — Sustainable Guidelines Research Center</div>
+            <!-- <div class="exp-period">2023.xx – 2024.xx</div> -->
+            <div class="exp-desc">Integrated climate simulation data; authored research reports on sustainable development.</div>
+        </div>
+    </div>
+
+    <div class="exp-item">
+        <div class="exp-icon">🛡️</div>
+        <div class="exp-content">
+            <div class="exp-role">Research Assistant</div>
+            <div class="exp-org">Ocean University of China — Institute of Public Safety and Risk Governance</div>
+            <!-- <div class="exp-period">2022.xx – 2023.xx</div> -->
+            <div class="exp-desc">Participated in research on public safety governance.</div>
+        </div>
+    </div>
+
+    <div class="exp-category">Industry Experience</div>
+
+    <div class="exp-item">
+        <div class="exp-icon">💬</div>
+        <div class="exp-content">
+            <div class="exp-role">Product Planner</div>
+            <div class="exp-org">Tencent (腾讯)</div>
+            <!-- <div class="exp-period">2021.xx – 2023.xx</div> -->
+            <div class="exp-desc"><!-- 在这里补充你在腾讯的工作描述 --></div>
+        </div>
+    </div>
+
+    <div class="exp-item">
+        <div class="exp-icon">📺</div>
+        <div class="exp-content">
+            <div class="exp-role">Product Management Intern</div>
+            <div class="exp-org">Bilibili (B站)</div>
+            <!-- <div class="exp-period">2020.xx – 2021.xx</div> -->
+            <div class="exp-desc"><!-- 在这里补充描述 --></div>
+        </div>
+    </div>
+
+    <div class="exp-item">
+        <div class="exp-icon">📱</div>
+        <div class="exp-content">
+            <div class="exp-role">Product Management Intern</div>
+            <div class="exp-org">Weibo (微博)</div>
+            <!-- <div class="exp-period">2020.xx – 2020.xx</div> -->
+            <div class="exp-desc"><!-- 在这里补充描述 --></div>
+        </div>
+    </div>
+
+    <div class="exp-item">
+        <div class="exp-icon">🎮</div>
+        <div class="exp-content">
+            <div class="exp-role">Product Management Intern</div>
+            <div class="exp-org">Hero Games (英雄游戏)</div>
+            <!-- <div class="exp-period">2019.xx – 2020.xx</div> -->
+            <div class="exp-desc"><!-- 在这里补充描述 --></div>
+        </div>
+    </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications" class="fade-in">
+    <h2 class="section-title">Publications</h2>
+    <div class="section-divider"></div>
+
+    <p style="font-size: 0.92rem; color: var(--color-text-secondary); margin-bottom: 24px;">
+        (* indicates equal contribution, † indicates corresponding author)
+    </p>
+
+    <div class="pub-category">Conference Papers</div>
+
+    <div class="pub-item">
+        <div class="pub-title">你的论文标题 (替换为真实论文)</div>
+        <div class="pub-venue">Conference Name, 2025</div>
+        <div class="pub-authors"><span class="me">Shuo Wang</span>, Author Two, Author Three</div>
+        <div class="pub-links">
+            <a href="#">Paper</a>
+            <a href="#">Code</a>
+        </div>
+    </div>
+
+    <div class="pub-category">Journal Articles</div>
+
+    <div class="pub-item">
+        <div class="pub-title">另一篇论文标题 (替换为真实论文)</div>
+        <div class="pub-venue">Journal Name, 2024</div>
+        <div class="pub-authors">Author One, <span class="me">Shuo Wang</span>, Author Three</div>
+        <div class="pub-links">
+            <a href="#">Paper</a>
+        </div>
+    </div>
+
+    <div class="pub-category">Preprints & Working Papers</div>
+
+    <div class="pub-item">
+        <div class="pub-title">进行中的论文标题 (替换为真实论文)</div>
+        <div class="pub-venue">arXiv preprint, 2025</div>
+        <div class="pub-authors"><span class="me">Shuo Wang</span>, Author Two</div>
+        <div class="pub-links">
+            <a href="#">arXiv</a>
+        </div>
+    </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="fade-in">
+    <h2 class="section-title">Projects</h2>
+    <div class="section-divider"></div>
+    <div class="projects-grid">
+
+        <div class="project-card">
+            <h3>🎮 Game Studies</h3>
+            <p>Examining how video games serve as mediums for historical reconstruction and architectural rhetoric.</p>
+            <div class="project-tags">
+                <span>Game Studies</span>
+                <span>Digital Humanities</span>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <h3>🏙️ Urban AI Analytics</h3>
+            <p>Applying machine learning to urban planning, crime analysis, and social safety nets.</p>
+            <div class="project-tags">
+                <span>Urban Computing</span>
+                <span>ML</span>
+                <span>GIS</span>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <h3>📊 Social Dynamics</h3>
+            <p>Using data science to visualize unseen patterns of urban life and social dynamics.</p>
+            <div class="project-tags">
+                <span>Data Science</span>
+                <span>Visualization</span>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <h3>🤖 AI & Society</h3>
+            <p>Investigating the socio-technical impact of intelligent systems on vulnerable populations.</p>
+            <div class="project-tags">
+                <span>AI Ethics</span>
+                <span>STS</span>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2026 Wang Shuo · Built with ☕ and deployed on <a href="https://pages.github.com" target="_blank">GitHub Pages</a></p>
+</footer>
+
+<!-- Scroll-triggered animations -->
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
