@@ -1,8 +1,9 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Wang Shuo (王硕) — Interdisciplinary researcher in Game Studies, Computational Social Science, and AI & Society. M.S. student at NUS and CU Boulder.">
     <title>Wang Shuo (王硕)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -62,76 +63,78 @@
             color: var(--color-text);
             text-decoration: none;
             letter-spacing: -0.01em;
+            cursor: pointer;
         }
 
-        .nav-links { display: flex; gap: 24px; }
+        .nav-links { display: flex; gap: 6px; flex-wrap: wrap; }
 
         .nav-links a {
-            font-size: 0.88rem;
+            font-size: 0.85rem;
             color: var(--color-text-secondary);
             text-decoration: none;
             font-weight: 400;
-            transition: color 0.2s;
-            position: relative;
+            transition: all 0.2s;
+            padding: 4px 12px;
+            border-radius: 5px;
+            cursor: pointer;
         }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -3px;
-            left: 0;
-            width: 0;
-            height: 1.5px;
-            background: var(--color-accent);
-            transition: width 0.25s ease;
+        .nav-links a:hover {
+            color: var(--color-accent);
+            background: var(--color-tag-bg);
         }
 
-        .nav-links a:hover { color: var(--color-accent); }
-        .nav-links a:hover::after { width: 100%; }
+        .nav-links a.active {
+            color: var(--color-accent);
+            background: var(--color-tag-bg);
+            font-weight: 600;
+        }
 
         /* === HERO === */
         .hero {
             max-width: var(--max-width);
             margin: 0 auto;
-            padding: 60px 24px 44px;
+            padding: 48px 24px 36px;
             display: flex;
-            gap: 44px;
+            gap: 40px;
             align-items: flex-start;
         }
 
         .hero-avatar {
-            width: 155px;
-            height: 155px;
+            width: 145px;
+            height: 145px;
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid var(--color-border);
             flex-shrink: 0;
+            background: var(--color-tag-bg);
         }
 
         .hero-info { flex: 1; }
 
         .hero-info h1 {
             font-family: var(--font-serif);
-            font-size: 2.1rem;
+            font-size: 2rem;
             font-weight: 600;
             letter-spacing: -0.02em;
             margin-bottom: 4px;
         }
 
         .hero-tagline {
-            font-size: 1.02rem;
+            font-size: 1rem;
             color: var(--color-text-secondary);
             margin-bottom: 4px;
             font-weight: 300;
         }
 
         .hero-affiliation {
-            font-size: 0.92rem;
+            font-size: 0.9rem;
             color: var(--color-text-secondary);
             margin-bottom: 14px;
+            line-height: 1.6;
         }
 
-        .hero-links { display: flex; gap: 12px; flex-wrap: wrap; }
+        .hero-links { display: flex; gap: 10px; flex-wrap: wrap; }
 
         .hero-links a {
             display: inline-flex;
@@ -155,54 +158,26 @@
 
         .hero-links a svg { width: 14px; height: 14px; }
 
-        /* === NEWS === */
-        .news-section {
-            max-width: var(--max-width);
-            margin: 0 auto 16px;
-            padding: 0 24px;
-        }
+        /* === PAGE CONTENT === */
+        .page { display: none; }
+        .page.active { display: block; }
 
-        .news-box {
-            background: var(--color-highlight);
-            border: 1px solid #f0e6c0;
-            border-radius: 10px;
-            padding: 18px 22px;
-        }
-
-        .news-title {
-            font-family: var(--font-serif);
-            font-size: 0.98rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .news-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
-
-        .news-list li {
-            font-size: 0.88rem;
-            line-height: 1.6;
-            color: var(--color-text-secondary);
-        }
-
-        .news-date {
-            font-weight: 600;
-            color: var(--color-accent);
-            margin-right: 4px;
-        }
-
-        /* === SECTIONS === */
-        section {
+        .page-inner {
             max-width: var(--max-width);
             margin: 0 auto;
-            padding: 44px 24px;
+            padding: 8px 24px 60px;
+            animation: pageFade 0.3s ease;
         }
 
+        @keyframes pageFade {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* === SHARED === */
         .section-title {
             font-family: var(--font-serif);
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: 500;
             color: var(--color-text);
             margin-bottom: 8px;
@@ -213,14 +188,53 @@
             width: 100%;
             height: 1px;
             background: var(--color-border);
-            margin-bottom: 28px;
+            margin-bottom: 26px;
+        }
+
+        /* === NEWS === */
+        .news-box {
+            background: var(--color-highlight);
+            border: 1px solid #f0e6c0;
+            border-radius: 10px;
+            padding: 18px 22px;
+            margin-bottom: 32px;
+        }
+
+        .news-label {
+            font-family: var(--font-serif);
+            font-size: 0.96rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .news-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+
+        .news-list li {
+            font-size: 0.88rem;
+            line-height: 1.6;
+            color: var(--color-text-secondary);
+        }
+
+        .news-list li a { color: var(--color-accent-light); text-decoration: none; }
+
+        .news-date {
+            display: inline-block;
+            font-size: 0.76rem;
+            font-weight: 600;
+            color: var(--color-accent);
+            background: rgba(26, 82, 118, 0.08);
+            padding: 1px 8px;
+            border-radius: 4px;
+            margin-right: 6px;
         }
 
         /* === ABOUT === */
         .about-text {
-            font-size: 0.98rem;
+            font-size: 0.96rem;
             line-height: 1.85;
         }
+
+        .about-text p + p { margin-top: 12px; }
 
         .about-text a {
             color: var(--color-accent-light);
@@ -246,8 +260,14 @@
             border-radius: 6px;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
             width: fit-content;
+        }
+
+        .meta-line {
+            margin-top: 18px;
+            font-size: 0.91rem;
+            color: var(--color-text-secondary);
+            line-height: 1.7;
         }
 
         /* === EXPERIENCE === */
@@ -264,50 +284,28 @@
 
         .exp-item {
             display: flex;
-            gap: 16px;
+            gap: 14px;
             margin-bottom: 24px;
             align-items: flex-start;
         }
 
-        .exp-icon {
-            width: 42px;
-            height: 42px;
-            border-radius: 10px;
-            background: var(--color-tag-bg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
+        .exp-logo {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            object-fit: contain;
             flex-shrink: 0;
+            background: var(--color-card-bg);
             border: 1px solid var(--color-border);
-        }
-
-        .exp-content { flex: 1; }
-
-        .exp-role {
-            font-weight: 600;
-            font-size: 0.95rem;
-            color: var(--color-text);
-        }
-
-        .exp-org {
-            font-size: 0.9rem;
-            color: var(--color-accent);
-            font-weight: 500;
-        }
-
-        .exp-period {
-            font-size: 0.82rem;
-            color: var(--color-text-secondary);
+            padding: 4px;
             margin-top: 2px;
         }
 
-        .exp-desc {
-            font-size: 0.87rem;
-            color: var(--color-text-secondary);
-            margin-top: 4px;
-            line-height: 1.6;
-        }
+        .exp-content { flex: 1; }
+        .exp-role { font-weight: 600; font-size: 0.95rem; color: var(--color-text); }
+        .exp-org { font-size: 0.9rem; color: var(--color-accent); font-weight: 500; }
+        .exp-period { font-size: 0.82rem; color: var(--color-text-secondary); margin-top: 2px; }
+        .exp-desc { font-size: 0.87rem; color: var(--color-text-secondary); margin-top: 4px; line-height: 1.6; }
 
         /* === PUBLICATIONS === */
         .pub-category {
@@ -330,18 +328,8 @@
 
         .pub-item:hover { border-left-color: var(--color-accent); }
 
-        .pub-title {
-            font-weight: 600;
-            font-size: 0.94rem;
-            color: var(--color-text);
-            line-height: 1.5;
-        }
-
-        .pub-venue {
-            font-style: italic;
-            color: var(--color-accent);
-            font-size: 0.87rem;
-        }
+        .pub-title { font-weight: 600; font-size: 0.94rem; color: var(--color-text); line-height: 1.5; }
+        .pub-venue { font-style: italic; color: var(--color-accent); font-size: 0.87rem; }
 
         .pub-authors {
             font-size: 0.87rem;
@@ -357,67 +345,115 @@
             text-underline-offset: 2px;
         }
 
-        .pub-links { margin-top: 6px; display: flex; gap: 8px; }
+        .pub-authors a { color: var(--color-accent-light); text-decoration: none; }
 
-        .pub-links a {
-            font-size: 0.78rem;
-            color: var(--color-accent-light);
-            text-decoration: none;
-            padding: 2px 10px;
+        /* === TEACHING & AWARDS === */
+        .subsection-title {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--color-text);
+            margin-bottom: 6px;
+        }
+
+        .subsection-divider {
+            width: 100%;
+            height: 1px;
+            background: var(--color-border);
+            margin-bottom: 20px;
+        }
+
+        .teaching-item {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 18px;
+            align-items: flex-start;
+        }
+
+        .teaching-logo {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            object-fit: contain;
+            flex-shrink: 0;
+            background: var(--color-card-bg);
             border: 1px solid var(--color-border);
-            border-radius: 4px;
+            padding: 4px;
+            margin-top: 2px;
+        }
+
+        .teaching-content { flex: 1; }
+        .teaching-course { font-weight: 600; font-size: 0.95rem; color: var(--color-text); }
+        .teaching-role { font-size: 0.9rem; color: var(--color-accent); font-weight: 500; }
+        .teaching-period { font-size: 0.82rem; color: var(--color-text-secondary); margin-top: 2px; }
+
+        .awards-section { margin-top: 40px; }
+
+        .award-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 14px 18px;
+            margin-bottom: 10px;
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
             transition: all 0.2s;
         }
 
-        .pub-links a:hover {
+        .award-item:hover {
+            border-color: var(--color-accent);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+        }
+
+        .award-info { flex: 1; }
+        .award-name { font-weight: 600; font-size: 0.95rem; color: var(--color-text); }
+        .award-org { font-size: 0.85rem; color: var(--color-text-secondary); margin-top: 2px; }
+
+        .award-year {
+            font-family: var(--font-serif);
+            font-size: 0.92rem;
+            font-weight: 500;
+            color: var(--color-accent);
+            flex-shrink: 0;
+            margin-left: 16px;
+        }
+
+        /* === BLOG === */
+        .blog-placeholder {
+            text-align: center;
+            padding: 60px 24px;
+            color: var(--color-text-secondary);
+        }
+
+        .blog-placeholder p {
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+        }
+
+        .blog-placeholder a {
+            display: inline-block;
+            padding: 8px 20px;
+            font-size: 0.88rem;
+            color: var(--color-accent);
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .blog-placeholder a:hover {
             background: var(--color-accent);
             color: #fff;
             border-color: var(--color-accent);
         }
 
         /* === PROJECTS === */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 18px;
-        }
-
-        .project-card {
-            background: var(--color-card-bg);
-            border: 1px solid var(--color-border);
-            border-radius: 10px;
-            padding: 22px;
-            transition: all 0.25s ease;
-            cursor: default;
-        }
-
-        .project-card:hover {
-            border-color: var(--color-accent);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-            transform: translateY(-2px);
-        }
-
-        .project-card h3 {
-            font-family: var(--font-serif);
-            font-size: 1.02rem;
-            font-weight: 500;
-            margin-bottom: 6px;
-        }
-
-        .project-card p {
-            font-size: 0.86rem;
+        .project-chinese {
+            font-size: 0.84rem;
             color: var(--color-text-secondary);
-            line-height: 1.6;
-        }
-
-        .project-tags { margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap; }
-
-        .project-tags span {
-            font-size: 0.73rem;
-            padding: 3px 10px;
-            background: var(--color-tag-bg);
-            border-radius: 20px;
-            color: var(--color-text-secondary);
+            margin-top: 2px;
         }
 
         /* === FOOTER === */
@@ -431,22 +467,7 @@
             border-top: 1px solid var(--color-border);
         }
 
-        footer a {
-            color: var(--color-accent-light);
-            text-decoration: none;
-        }
-
-        /* === ANIMATIONS === */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(14px);
-            transition: opacity 0.55s ease, transform 0.55s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        footer a { color: var(--color-accent-light); text-decoration: none; }
 
         /* === RESPONSIVE === */
         @media (max-width: 640px) {
@@ -457,21 +478,47 @@
                 gap: 20px;
                 padding-top: 36px;
             }
-
-            .hero-avatar { width: 115px; height: 115px; }
+            .hero-avatar { width: 110px; height: 110px; }
             .hero-links { justify-content: center; }
             .hero-info h1 { font-size: 1.7rem; }
-
-            .nav-links { gap: 14px; }
-            .nav-links a { font-size: 0.8rem; }
-
-            .projects-grid { grid-template-columns: 1fr; }
             .research-interests li { width: 100%; }
-
-            section { padding: 32px 20px; }
-
+            .page-inner { padding: 8px 20px 48px; }
             .exp-item { gap: 12px; }
-            .exp-icon { width: 36px; height: 36px; font-size: 1rem; }
+            .exp-logo { width: 30px; height: 30px; }
+            .teaching-logo { width: 30px; height: 30px; }
+            .award-item { flex-direction: column; gap: 4px; }
+            .award-year { margin-left: 0; }
+        }
+
+        /* === HAMBURGER === */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+            color: var(--color-text);
+        }
+
+        .menu-toggle svg { width: 22px; height: 22px; }
+
+        @media (max-width: 580px) {
+            .menu-toggle { display: block; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(250, 250, 248, 0.97);
+                backdrop-filter: blur(12px);
+                flex-direction: column;
+                padding: 12px 24px 16px;
+                border-bottom: 1px solid var(--color-border);
+                gap: 2px;
+            }
+            .nav-links.open { display: flex; }
+            .nav-links a { padding: 8px 12px; font-size: 0.88rem; }
         }
     </style>
 </head>
@@ -480,25 +527,30 @@
 <!-- NAV -->
 <header>
     <nav>
-        <a class="nav-name" href="#">Wang Shuo</a>
+        <a class="nav-name" onclick="showPage('home')">Wang Shuo</a>
+        <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
         <div class="nav-links">
-            <a href="#about">About</a>
-            <a href="#experience">Experience</a>
-            <a href="#publications">Publications</a>
-            <a href="#projects">Projects</a>
+            <a onclick="showPage('home')" class="active" data-page="home">Home</a>
+            <a onclick="showPage('experience')" data-page="experience">Experience</a>
+            <a onclick="showPage('publications')" data-page="publications">Publications</a>
+            <a onclick="showPage('misc')" data-page="misc">Teaching & Awards</a>
+            <a onclick="showPage('projects')" data-page="projects">Projects</a>
+            <a onclick="showPage('blog')" data-page="blog">Blog</a>
         </div>
     </nav>
 </header>
 
 <!-- HERO -->
-<div class="hero fade-in">
+<div class="hero">
     <img class="hero-avatar" src="profile.png" alt="Wang Shuo">
     <div class="hero-info">
         <h1>Wang Shuo (王硕)</h1>
         <p class="hero-tagline">Game Studies · Computational Social Science · AI & Society</p>
         <p class="hero-affiliation">
-            🏫 M.S. @ <strong>National University of Singapore</strong><br>
-            🎓 M.S. in AI (Online) @ <strong>University of Colorado Boulder</strong>
+            M.S. @ <strong>National University of Singapore</strong><br>
+            M.S. in AI (Online) @ <strong>University of Colorado Boulder</strong>
         </p>
         <div class="hero-links">
             <a href="mailto:shuowang@u.nus.edu">
@@ -507,7 +559,11 @@
             </a>
             <a href="WANG_Shuo_Academic_CV.pdf" target="_blank">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-            CV
+                CV
+            </a>
+            <a href="https://github.com/cheer-shuowang" target="_blank">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                GitHub
             </a>
             <a href="https://www.linkedin.com/in/shuo-wang-38038a3a3" target="_blank">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
@@ -517,246 +573,290 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
                 Instagram
             </a>
-            <a href="#" target="_blank">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-                Google Scholar
-            </a>
         </div>
     </div>
 </div>
 
-<div class="news-section fade-in">
-    <div class="news-box">
-        <div class="news-title">News</div>
-        <ul class="news-list">
-            <li>
-                <span class="badge badge-success">Mar 2026</span> 
-                Joined <b>National University of Singapore (NUS)</b> as a <b>Research Assistant</b> to Prof. <a href="https://yumenghou.com/">Yumeng Hou</a>. Focusing on VLM-driven dataset creation for historical illustrations.
-            </li>
-            
-            <li>
-                <span class="badge badge-success">Feb 2026</span> 
-                Accepted to the <b>LLM & Social Science Analysis Workshop</b> at <b>Peking University</b> Global Risk Politics Analysis Lab.
-            </li>
-            
-            <li>
-                <span class="badge badge-success">Feb 2026</span> 
-                My <b>first-author research</b> was accepted by <b>DiGRA 2026</b>.
-            </li>
-            
-            <li>
-                <span class="badge badge-success">Nov 2025</span> 
-                Poster accepted at the <b>4th Frontiers of OR & AI Workshop</b> at <b>Peking University (Shenzhen)</b>.
-            </li>
-        </ul>
-    </div>
-</div>
-
-<!-- ABOUT -->
-<section id="about" class="fade-in">
-    <h2 class="section-title">About Me</h2>
-    <div class="section-divider"></div>
-    <div class="about-text">
-        <p>
-            Hi! I'm Wang Shuo (王硕), you can also call me Allen. I'm an interdisciplinary researcher working at the intersection of <strong>Game Studies</strong>, <strong>Computational Social Science</strong>, and <strong>AI & Society</strong>. I use data-driven methods — NLP, machine learning, and agent-based modeling — to understand how digital communities shape identity, discourse, and public opinion.
-        </p>
-        <p style="margin-top: 12px;">
-            Currently, I'm a Master's student at the <a href="https://www.nus.edu.sg/">National University of Singapore (NUS)</a>, while concurrently pursuing an M.S. in Artificial Intelligence (Online) at the <a href="https://www.colorado.edu/">University of Colorado Boulder</a>. 
-        <p style="margin-top: 12px;">
-            Before academia, I worked as a product and strategy intern at <strong>Bilibili </strong>, <strong>Tencent</strong>, and <strong>Weibo</strong>, where I witnessed firsthand how algorithms and platform design shape user behavior — experiences that now fuel my research questions.
-        </p>
-        <p style="margin-top: 16px;">My research focuses on:</p>
-        <ul class="research-interests">
-            <li>🎮 <strong>Game Studies</strong> — Player communities, identity politics, sentiment dynamics in live service games</li>
-            <li>🤖 <strong>AI & Society</strong> — Toxicity perception, content moderation, algorithmic influence on public discourse</li>
-            <li>📊 <strong>Data Science</strong> — NLP pipelines, ML-based prediction, spatial-temporal modeling for urban analytics</li>
-        </ul>
-        <p style="margin-top: 18px; font-size: 0.93rem; color: var(--color-text-secondary);">
-            <strong>Technical:</strong> Python (NLP, ML, Data Analysis) · SQL (Advanced) · GIS & Spatial Analysis<br>
-            <strong>Languages:</strong> Mandarin (native) · English (advanced) · Spanish (intermediate)
-        </p>
-        <p style="margin-top: 12px; font-size: 0.93rem; color: var(--color-text-secondary);">
-            🎻 Outside of research, I enjoy traveling, playing the violin, and immersing myself in the virtual worlds of video games.
-        </p>
-    </div>
-</section>
-
-<!-- EXPERIENCE -->
-<section id="experience" class="fade-in">
-    <h2 class="section-title">Experience</h2>
-    <div class="section-divider"></div>
-
-    <div class="exp-category">Research Experience</div>
-
-<div class="exp-item">
-    <div class="exp-icon">🔬</div>
-    <div class="exp-content">
-        <div class="exp-role">Research Assistant</div>
-        <div class="exp-org">HKUST(Guangzhou) — PGSC Laboratory</div>
-        <div class="exp-period">Apr – Oct 2025</div>
-        <div class="exp-desc">Built structured databases of sustainability policies and carbon metrics for 20+ countries using Python and Pandas; developed automated statistical framework reducing data error rate from 32% to 8%.</div>
-    </div>
-</div>
-
-<div class="exp-item">
-    <div class="exp-icon">🛡️</div>
-    <div class="exp-content">
-        <div class="exp-role">Research Assistant</div>
-        <div class="exp-org">Ocean University of China — Institute of Public Safety and Risk Governance</div>
-        <div class="exp-period">2023 – 2025</div>
-        <div class="exp-desc">Developed ML-based risk analysis models for public safety scenarios using Python (Scikit-learn, XGBoost); built classification and prediction pipelines for risk assessment and early warning systems.</div>
-    </div>
-</div>
-
-<div class="exp-item">
-    <div class="exp-icon">🌱</div>
-    <div class="exp-content">
-        <div class="exp-role">Research Assistant</div>
-        <div class="exp-org">CUFE — Sustainable Guidelines Research Center</div>
-        <div class="exp-period">May – Aug 2023</div>
-        <div class="exp-desc">Integrated 300+ county-level climate simulation datasets using Python and SQL; published 4 literature reviews on climate risk-food security nexus supporting two policy briefs.</div>
-    </div>
-</div>
-
-<div class="exp-item">
-    <div class="exp-icon">🦎</div>
-    <div class="exp-content">
-        <div class="exp-role">Research Volunteer</div>
-        <div class="exp-org">Duke Kunshan University — Sustainable Development Laboratory</div>
-        <div class="exp-period">Aug – Oct 2023</div>
-        <div class="exp-desc">Processed 500+ infrared camera images identifying 12 wild animal species with 92% accuracy; mapped wildlife distribution via GIS tools, quantifying correlations between human activity and species presence.</div>
-    </div>
-</div>
-    
-   <div class="exp-category">Industry Experience</div>
-
-<div class="exp-item">
-    <div class="exp-icon">🛒</div>
-    <div class="exp-content">
-        <div class="exp-role">Strategy Product Intern</div>
-        <div class="exp-org">Bilibili — Data Strategy Group</div>
-        <div class="exp-period">Apr – Jun 2025</div>
-        <div class="exp-desc">Designed behaviour-tagging system using SQL clustering to segment high-value user cohorts; built data-driven retention interventions improving repurchase rates by 12%.</div>
-    </div>
-</div>
-
-<div class="exp-item">
-    <div class="exp-icon">🎮</div>
-    <div class="exp-content">
-        <div class="exp-role">Product Planning Intern</div>
-        <div class="exp-org">Tencent — Interactive Entertainment Group</div>
-        <div class="exp-period">Jul – Oct 2024</div>
-        <div class="exp-desc">Managed cross-department compliance project with data-driven resource allocation via dashboards; delivered two days early with DAU exceeding summer target by 16%.</div>
-    </div>
-</div>
-
-<div class="exp-item">
-    <div class="exp-icon">📱</div>
-    <div class="exp-content">
-        <div class="exp-role">ACGN Operation Intern</div>
-        <div class="exp-org">Sina Weibo</div>
-        <div class="exp-period">Oct 2023 – Jun 2024</div>
-        <div class="exp-desc">Led behavioural analysis of ACGN communities using data analytics, boosting daily interactions by 18%; coordinated AI commenting robot development, increasing group activity by 22%.</div>
-    </div>
-</div>
-
-<div class="exp-item">
-    <div class="exp-icon">🕹️</div>
-    <div class="exp-content">
-        <div class="exp-role">Operation Intern</div>
-        <div class="exp-org">Hero Games — Nebula Business Unit</div>
-        <div class="exp-period">Jun – Sep 2023</div>
-        <div class="exp-desc">Ensured game privacy policy compliance with legal requirements; flagged potential legal risks and coordinated cross-team resolution.</div>
-    </div>
-</div>
-
-<!-- PUBLICATIONS -->
-<section id="publications" class="fade-in">
-    <h2 class="section-title">Publications</h2>
-    <div class="section-divider"></div>
-
-    <div class="pub-category">Peer-Reviewed Conference Papers</div>
-
-    <div class="pub-item">
-        <div class="pub-title">Label Offensive and Defensive in Interest-Based Battlefields: Identity Politics and Public Opinion Polarization in China's ACG Communities</div>
-        <div class="pub-venue">Proceedings of DiGRA 2026 (Accepted)</div>
-        <div class="pub-authors"><span class="me">Shuo Wang</span></div>
-    </div>
-
-    <div class="pub-category">Poster Presentations</div>
-
-    <div class="pub-item">
-        <div class="pub-title">Spatiotemporal-Aware Precise Optimization of Bus Stop Layout in Aging Urban Districts: A Multi-Objective Model Driven by STGCN</div>
-        <div class="pub-venue">The 4th "Frontiers of OR & AI in Industry" Workshop, Peking University Shenzhen, 2025 (Poster)</div>
-        <div class="pub-authors"><span class="me">Shuo Wang</span></div>
-    </div>
-
-    <div class="pub-category">Working in Progress</div>
-
-   <div class="publication-item">
-    <p>
-        <strong>Who Decides What's Toxic? How Player Identity Shapes Social Perception of Toxicity in Online Game Communities</strong><br>
-        Submitted to <em>NLPercep @ ACL 2026</em><br>
-        Shuo Wang, <a href="http://siapa.ouc.edu.cn/2021/0827/c18177a486641/page.htm" target="_blank"><strong>Xue Wang*</strong></a><br>
-    </p>
-</div>
-
-<div class="publication-item">
-    <p>
-        <strong>"Dead Game Walking": Predicting Player Retention in Live Service Games from Community Sentiment Signals</strong><br>
-        Submitted to <em>FDG 2026</em><br>
-        Shuo Wang, <a href="http://siapa.ouc.edu.cn/2021/0827/c18177a486641/page.htm" target="_blank"><strong>Xue Wang*</strong></a><br>
-    </p>
-</div>
-
-</section>
-<!-- PROJECTS -->
-<section id="projects" class="fade-in">
-    <h2 class="section-title">Research Projects</h2>
-    <div class="section-divider"></div>
-
-    <div class="pub-item">
-        <div class="pub-title">Resilience Governance of Risks in Coastal Megacities under the Holistic National Security Perspective</div>
-        <div style="font-size: 0.84rem; color: var(--color-text-secondary); margin-top: 2px;">
-            总体国家安全观下沿海特大城市风险的韧性治理研究
+<!-- ===== PAGE: HOME ===== -->
+<div class="page active" id="page-home">
+    <div class="page-inner">
+        <div class="news-box">
+            <div class="news-label">Recent News</div>
+            <ul class="news-list">
+                <li><span class="news-date">Mar 2026</span> Joined <b>NUS</b> as a Research Assistant to Prof. <a href="https://yumenghou.com/">Yumeng Hou</a>. Focusing on VLM-driven dataset creation for historical illustrations.</li>
+                <li><span class="news-date">Feb 2026</span> Accepted to the <b>LLM & Social Science Analysis Workshop</b> at Peking University.</li>
+                <li><span class="news-date">Feb 2026</span> First-author paper accepted by <b>DiGRA 2026</b>.</li>
+                <li><span class="news-date">Nov 2025</span> Poster accepted at the <b>4th Frontiers of OR & AI Workshop</b>, Peking University (Shenzhen).</li>
+            </ul>
         </div>
-        <div class="pub-venue">National Social Science Fund of China — Key Project (Grant No. 21AZZ014)</div>
-        <div class="pub-authors">Participant · 2023 – 2025</div>
-    </div>
 
-    <div class="pub-item">
-        <div class="pub-title">Generation, Evolution and Governance Mechanisms of Public Opinion Polarization in Public Emergencies</div>
-        <div style="font-size: 0.84rem; color: var(--color-text-secondary); margin-top: 2px;">
-            突发公共事件舆情极化的生成演化与治理机制研究
+        <h2 class="section-title">About</h2>
+        <div class="section-divider"></div>
+        <div class="about-text">
+            <p>Hi! I'm Wang Shuo (王硕), you can also call me Allen. I'm an interdisciplinary researcher working at the intersection of <strong>Game Studies</strong>, <strong>Computational Social Science</strong>, and <strong>AI & Society</strong>. I use data-driven methods — NLP, machine learning, and agent-based modeling — to understand how digital communities shape identity, discourse, and public opinion.</p>
+            <p>Currently, I'm a Master's student at the <a href="https://www.nus.edu.sg/">National University of Singapore (NUS)</a>, while concurrently pursuing an M.S. in Artificial Intelligence (Online) at the <a href="https://www.colorado.edu/">University of Colorado Boulder</a>.</p>
+            <p>Before academia, I worked as a product and strategy intern at <strong>Bilibili</strong>, <strong>Tencent</strong>, and <strong>Weibo</strong>, where I witnessed firsthand how algorithms and platform design shape user behavior — experiences that now fuel my research questions.</p>
+            <p style="margin-top: 16px;">My research focuses on:</p>
+            <ul class="research-interests">
+                <li><strong>Game Studies</strong> — Player communities, identity politics, sentiment dynamics in live service games</li>
+                <li><strong>AI & Society</strong> — Toxicity perception, content moderation, algorithmic influence on public discourse</li>
+                <li><strong>Data Science</strong> — NLP pipelines, ML-based prediction, spatial-temporal modeling for urban analytics</li>
+            </ul>
+            <div class="meta-line">
+                <strong>Technical:</strong> Python (NLP, ML, Data Analysis) · SQL · Stata · SPSS · GIS & Spatial Analysis · Git<br>
+                <strong>Languages:</strong> Mandarin (native) · English (advanced) · Spanish (intermediate)
+            </div>
+            <p style="margin-top: 12px; font-size: 0.93rem; color: var(--color-text-secondary);">
+                Outside of research, I enjoy traveling, playing the violin, and immersing myself in the virtual worlds of video games.
+            </p>
         </div>
-        <div class="pub-venue">Shandong Provincial Natural Science Foundation — Youth Project (Grant No. ZR2023QG090)</div>
-        <div class="pub-authors">Participant</div>
     </div>
+</div>
 
-    <div class="pub-item">
-        <div class="pub-title">Agent-Based Modelling of Urban Crime Dynamics</div>
-        <div class="pub-venue">Independent Research Project</div>
-        <div class="pub-authors"><span class="me">Shuo Wang</span>, Hongyang Zhang (<a href="https://www.crim.cam.ac.uk/" style="color: var(--color-accent-light); text-decoration: none;">Institute of Criminology, University of Cambridge</a>)</div>
+<!-- ===== PAGE: EXPERIENCE ===== -->
+<div class="page" id="page-experience">
+    <div class="page-inner">
+        <h2 class="section-title">Experience</h2>
+        <div class="section-divider"></div>
+
+        <div class="exp-category">Research</div>
+
+        <div class="exp-item">
+            <img class="exp-logo" src="https://www.google.com/s2/favicons?domain=hkust-gz.edu.cn&sz=64" alt="HKUST(GZ)">
+            <div class="exp-content">
+                <div class="exp-role">Research Assistant</div>
+                <div class="exp-org">HKUST(Guangzhou) — PGSC Laboratory</div>
+                <div class="exp-period">Apr – Oct 2025</div>
+                <div class="exp-desc">Built structured databases of sustainability policies and carbon metrics for 20+ countries using Python and Pandas; developed automated statistical framework reducing data error rate from 32% to 8%.</div>
+            </div>
+        </div>
+
+        <div class="exp-item">
+            <img class="exp-logo" src="https://www.google.com/s2/favicons?domain=ouc.edu.cn&sz=64" alt="OUC">
+            <div class="exp-content">
+                <div class="exp-role">Research Assistant</div>
+                <div class="exp-org">Ocean University of China — Institute of Public Safety and Risk Governance</div>
+                <div class="exp-period">2023 – 2025</div>
+                <div class="exp-desc">Developed ML-based risk analysis models for public safety scenarios using Python (Scikit-learn, XGBoost); built classification and prediction pipelines for risk assessment and early warning systems.</div>
+            </div>
+        </div>
+
+        <div class="exp-item">
+            <img class="exp-logo" src="https://www.google.com/s2/favicons?domain=cufe.edu.cn&sz=64" alt="CUFE">
+            <div class="exp-content">
+                <div class="exp-role">Research Assistant</div>
+                <div class="exp-org">CUFE — Sustainable Guidelines Research Center</div>
+                <div class="exp-period">May – Aug 2023</div>
+                <div class="exp-desc">Integrated 300+ county-level climate simulation datasets using Python and SQL; published 4 literature reviews on climate risk-food security nexus supporting two policy briefs.</div>
+            </div>
+        </div>
+
+        <div class="exp-item">
+            <img class="exp-logo" src="https://www.google.com/s2/favicons?domain=dukekunshan.edu.cn&sz=64" alt="DKU">
+            <div class="exp-content">
+                <div class="exp-role">Research Volunteer</div>
+                <div class="exp-org">Duke Kunshan University — Sustainable Development Laboratory</div>
+                <div class="exp-period">Aug – Oct 2023</div>
+                <div class="exp-desc">Processed 500+ infrared camera images identifying 12 wild animal species with 92% accuracy; mapped wildlife distribution via GIS tools, quantifying correlations between human activity and species presence.</div>
+            </div>
+        </div>
+
+        <div class="exp-category">Industry</div>
+
+        <div class="exp-item">
+            <img class="exp-logo" src="https://www.google.com/s2/favicons?domain=bilibili.com&sz=64" alt="Bilibili">
+            <div class="exp-content">
+                <div class="exp-role">Strategy Product Intern</div>
+                <div class="exp-org">Bilibili — Data Strategy Group</div>
+                <div class="exp-period">Apr – Jun 2025</div>
+                <div class="exp-desc">Designed behaviour-tagging system using SQL clustering to segment high-value user cohorts; built data-driven retention interventions improving repurchase rates by 12%.</div>
+            </div>
+        </div>
+
+        <div class="exp-item">
+            <img class="exp-logo" src="https://www.google.com/s2/favicons?domain=tencent.com&sz=64" alt="Tencent">
+            <div class="exp-content">
+                <div class="exp-role">Product Planning Intern</div>
+                <div class="exp-org">Tencent — Interactive Entertainment Group</div>
+                <div class="exp-period">Jul – Oct 2024</div>
+                <div class="exp-desc">Managed cross-department compliance project with data-driven resource allocation via dashboards; delivered two days early with DAU exceeding summer target by 16%.</div>
+            </div>
+        </div>
+
+        <div class="exp-item">
+            <img class="exp-logo" src="https://www.google.com/s2/favicons?domain=weibo.com&sz=64" alt="Weibo">
+            <div class="exp-content">
+                <div class="exp-role">ACGN Operation Intern</div>
+                <div class="exp-org">Sina Weibo</div>
+                <div class="exp-period">Oct 2023 – Jun 2024</div>
+                <div class="exp-desc">Led behavioural analysis of ACGN communities using data analytics, boosting daily interactions by 18%; coordinated AI commenting robot development, increasing group activity by 22%.</div>
+            </div>
+        </div>
+
+        <div class="exp-item">
+            <img class="exp-logo" src="https://www.google.com/s2/favicons?domain=herogames.com&sz=64" alt="Hero Games">
+            <div class="exp-content">
+                <div class="exp-role">Operation Intern</div>
+                <div class="exp-org">Hero Games — Nebula Business Unit</div>
+                <div class="exp-period">Jun – Sep 2023</div>
+                <div class="exp-desc">Ensured game privacy policy compliance with legal requirements; flagged potential legal risks and coordinated cross-team resolution.</div>
+            </div>
+        </div>
     </div>
+</div>
 
-</section>
+<!-- ===== PAGE: PUBLICATIONS ===== -->
+<div class="page" id="page-publications">
+    <div class="page-inner">
+        <h2 class="section-title">Publications</h2>
+        <div class="section-divider"></div>
+
+        <div class="pub-category">Peer-Reviewed Conference Papers</div>
+
+        <div class="pub-item">
+            <div class="pub-title">Label Offensive and Defensive in Interest-Based Battlefields: Identity Politics and Public Opinion Polarization in China's ACG Communities</div>
+            <div class="pub-venue">Proceedings of DiGRA 2026 (Accepted)</div>
+            <div class="pub-authors"><span class="me">Shuo Wang</span></div>
+        </div>
+
+        <div class="pub-category">Poster Presentations</div>
+
+        <div class="pub-item">
+            <div class="pub-title">Spatiotemporal-Aware Precise Optimization of Bus Stop Layout in Aging Urban Districts: A Multi-Objective Model Driven by STGCN</div>
+            <div class="pub-venue">The 4th "Frontiers of OR & AI in Industry" Workshop, Peking University Shenzhen, 2025 (Poster)</div>
+            <div class="pub-authors"><span class="me">Shuo Wang</span></div>
+        </div>
+
+        <div class="pub-category">Working Papers</div>
+
+        <div class="pub-item">
+            <div class="pub-title">Who Decides What's Toxic? How Player Identity Shapes Social Perception of Toxicity in Online Game Communities</div>
+            <div class="pub-venue">Submitted to NLPercep @ ACL 2026</div>
+            <div class="pub-authors"><span class="me">Shuo Wang</span>, <a href="http://siapa.ouc.edu.cn/2021/0827/c18177a486641/page.htm" target="_blank">Xue Wang*</a></div>
+        </div>
+
+        <div class="pub-item">
+            <div class="pub-title">"Dead Game Walking": Predicting Player Retention in Live Service Games from Community Sentiment Signals</div>
+            <div class="pub-venue">Submitted to FDG 2026</div>
+            <div class="pub-authors"><span class="me">Shuo Wang</span>, <a href="http://siapa.ouc.edu.cn/2021/0827/c18177a486641/page.htm" target="_blank">Xue Wang*</a></div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== PAGE: TEACHING & AWARDS ===== -->
+<div class="page" id="page-misc">
+    <div class="page-inner">
+        <h2 class="subsection-title">Teaching</h2>
+        <div class="subsection-divider"></div>
+
+        <div class="teaching-item">
+            <img class="teaching-logo" src="https://www.google.com/s2/favicons?domain=ouc.edu.cn&sz=64" alt="OUC">
+            <div class="teaching-content">
+                <div class="teaching-course">Academic English</div>
+                <div class="teaching-role">Teaching Assistant · Ocean University of China</div>
+                <div class="teaching-period">Winter 2024</div>
+            </div>
+        </div>
+
+        <div class="teaching-item">
+            <img class="teaching-logo" src="https://www.google.com/s2/favicons?domain=ouc.edu.cn&sz=64" alt="OUC">
+            <div class="teaching-content">
+                <div class="teaching-course">Logic</div>
+                <div class="teaching-role">Teaching Assistant · Ocean University of China</div>
+                <div class="teaching-period">Spring 2022</div>
+            </div>
+        </div>
+
+        <div class="awards-section">
+            <h2 class="subsection-title">Awards & Honors</h2>
+            <div class="subsection-divider"></div>
+
+            <div class="award-item">
+                <div class="award-info">
+                    <div class="award-name">Outstanding Graduate</div>
+                    <div class="award-org">Ocean University of China</div>
+                </div>
+                <div class="award-year">2025</div>
+            </div>
+
+            <div class="award-item">
+                <div class="award-info">
+                    <div class="award-name">Chuying Excellence Scholarship (储英卓越奖学金)</div>
+                    <div class="award-org">Ocean University of China</div>
+                </div>
+                <div class="award-year">2024</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== PAGE: PROJECTS ===== -->
+<div class="page" id="page-projects">
+    <div class="page-inner">
+        <h2 class="section-title">Research Projects</h2>
+        <div class="section-divider"></div>
+
+        <div class="pub-item">
+            <div class="pub-title">Resilience Governance of Risks in Coastal Megacities under the Holistic National Security Perspective</div>
+            <div class="project-chinese">总体国家安全观下沿海特大城市风险的韧性治理研究</div>
+            <div class="pub-venue">National Social Science Fund of China — Key Project (Grant No. 21AZZ014)</div>
+            <div class="pub-authors">Participant · 2023 – 2025</div>
+        </div>
+
+        <div class="pub-item">
+            <div class="pub-title">Generation, Evolution and Governance Mechanisms of Public Opinion Polarization in Public Emergencies</div>
+            <div class="project-chinese">突发公共事件舆情极化的生成演化与治理机制研究</div>
+            <div class="pub-venue">Shandong Provincial Natural Science Foundation — Youth Project (Grant No. ZR2023QG090)</div>
+            <div class="pub-authors">Participant</div>
+        </div>
+
+        <div class="pub-item">
+            <div class="pub-title">Agent-Based Modelling of Urban Crime Dynamics</div>
+            <div class="pub-venue">Independent Research Project</div>
+            <div class="pub-authors"><span class="me">Shuo Wang</span>, Hongyang Zhang (<a href="https://www.crim.cam.ac.uk/">Institute of Criminology, University of Cambridge</a>)</div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== PAGE: BLOG ===== -->
+<div class="page" id="page-blog">
+    <div class="page-inner">
+        <h2 class="section-title">Blog</h2>
+        <div class="section-divider"></div>
+        <div class="blog-placeholder">
+            <p>Writing is on its way. Stay tuned.</p>
+            <!-- TODO: Replace '#' with your Substack URL once ready, e.g. https://yourname.substack.com -->
+            <!--
+            <a href="#" target="_blank">Read on Substack</a>
+            -->
+        </div>
+    </div>
+</div>
 
 <!-- FOOTER -->
 <footer>
-    <p>© 2026 Wang Shuo · Built with ☕ and deployed on <a href="https://pages.github.com" target="_blank">GitHub Pages</a></p>
+    <p>&copy; 2026 Wang Shuo · Deployed on <a href="https://pages.github.com" target="_blank">GitHub Pages</a></p>
 </footer>
 
-<!-- Scroll-triggered animations -->
 <script>
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.08 });
-
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+function showPage(pageId) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    const target = document.getElementById('page-' + pageId);
+    if (target) {
+        target.classList.add('active');
+        const inner = target.querySelector('.page-inner');
+        if (inner) {
+            inner.style.animation = 'none';
+            inner.offsetHeight;
+            inner.style.animation = '';
+        }
+    }
+    document.querySelectorAll('.nav-links a').forEach(a => {
+        a.classList.toggle('active', a.dataset.page === pageId);
+    });
+    document.querySelector('.nav-links').classList.remove('open');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 </script>
 
 </body>
