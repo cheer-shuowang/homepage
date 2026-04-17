@@ -204,7 +204,36 @@
             font-family: var(--font-serif);
             font-size: 0.96rem;
             font-weight: 600;
-            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .news-toggle-icon {
+            font-size: 0.75rem;
+            color: var(--color-text-secondary);
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .news-label.collapsed .news-toggle-icon {
+            transform: rotate(-90deg);
+        }
+
+        .news-body {
+            overflow: hidden;
+            max-height: 300px;
+            opacity: 1;
+            transition: max-height 0.4s ease, opacity 0.3s ease, margin-top 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .news-body.collapsed {
+            max-height: 0;
+            opacity: 0;
+            margin-top: 0;
         }
 
         .news-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
@@ -272,40 +301,63 @@
 
         /* === EXPERIENCE === */
         .exp-category {
-            font-family: var(--font-serif);
-            font-size: 1.1rem;
-            font-weight: 500;
-            font-style: italic;
-            color: var(--color-text);
-            margin: 28px 0 16px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--color-text-secondary);
+            margin: 32px 0 14px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid var(--color-border);
         }
 
         .exp-category:first-of-type { margin-top: 0; }
 
         .exp-item {
+            margin-bottom: 22px;
+            padding-left: 14px;
+            border-left: 2px solid var(--color-border);
+            transition: border-color 0.2s;
+        }
+
+        .exp-item:hover { border-left-color: var(--color-accent); }
+
+        .exp-header {
             display: flex;
-            gap: 14px;
-            margin-bottom: 24px;
-            align-items: flex-start;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 12px;
+            flex-wrap: wrap;
         }
 
-        .exp-logo {
-            width: 36px;
-            height: 36px;
-            border-radius: 8px;
-            object-fit: contain;
+        .exp-role {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--color-text);
+            letter-spacing: -0.01em;
+        }
+
+        .exp-period {
+            font-size: 0.78rem;
+            color: var(--color-text-secondary);
+            white-space: nowrap;
             flex-shrink: 0;
-            background: var(--color-card-bg);
-            border: 1px solid var(--color-border);
-            padding: 4px;
-            margin-top: 2px;
         }
 
-        .exp-content { flex: 1; }
-        .exp-role { font-weight: 600; font-size: 0.95rem; color: var(--color-text); }
-        .exp-org { font-size: 0.9rem; color: var(--color-accent); font-weight: 500; }
-        .exp-period { font-size: 0.82rem; color: var(--color-text-secondary); margin-top: 2px; }
-        .exp-desc { font-size: 0.87rem; color: var(--color-text-secondary); margin-top: 4px; line-height: 1.6; }
+        .exp-org {
+            font-size: 0.88rem;
+            color: var(--color-accent);
+            font-weight: 500;
+            margin-top: 1px;
+        }
+
+        .exp-desc {
+            font-size: 0.86rem;
+            color: var(--color-text-secondary);
+            margin-top: 5px;
+            line-height: 1.65;
+        }
 
         /* === PUBLICATIONS === */
         .pub-category {
@@ -364,28 +416,42 @@
         }
 
         .teaching-item {
+            margin-bottom: 16px;
+            padding-left: 14px;
+            border-left: 2px solid var(--color-border);
+            transition: border-color 0.2s;
+        }
+
+        .teaching-item:hover { border-left-color: var(--color-accent); }
+
+        .teaching-header {
             display: flex;
-            gap: 14px;
-            margin-bottom: 18px;
-            align-items: flex-start;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 12px;
         }
 
-        .teaching-logo {
-            width: 36px;
-            height: 36px;
-            border-radius: 8px;
-            object-fit: contain;
+        .teaching-course {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--color-text);
+            letter-spacing: -0.01em;
+        }
+
+        .teaching-period {
+            font-size: 0.78rem;
+            color: var(--color-text-secondary);
+            white-space: nowrap;
             flex-shrink: 0;
-            background: var(--color-card-bg);
-            border: 1px solid var(--color-border);
-            padding: 4px;
-            margin-top: 2px;
         }
 
-        .teaching-content { flex: 1; }
-        .teaching-course { font-weight: 600; font-size: 0.95rem; color: var(--color-text); }
-        .teaching-role { font-size: 0.9rem; color: var(--color-accent); font-weight: 500; }
-        .teaching-period { font-size: 0.82rem; color: var(--color-text-secondary); margin-top: 2px; }
+        .teaching-role {
+            font-size: 0.88rem;
+            color: var(--color-accent);
+            font-weight: 500;
+            margin-top: 1px;
+        }
 
         .awards-section { margin-top: 40px; }
 
@@ -547,7 +613,7 @@
     <img class="hero-avatar" src="profile.png" alt="Wang Shuo">
     <div class="hero-info">
         <h1>Wang Shuo (王硕)</h1>
-        <p class="hero-tagline">Game Studies · Computational Social Science · AI & Society</p>
+        <p class="hero-tagline">Game Studies · Computational Social Science · Digital Humanities</p>
         <p class="hero-affiliation">
             M.S. @ <strong>National University of Singapore</strong><br>
             M.S. in AI (Online) @ <strong>University of Colorado Boulder</strong>
@@ -569,10 +635,6 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
                 LinkedIn
             </a>
-            <a href="https://instagram.com/wangshuo09" target="_blank">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-                Instagram
-            </a>
         </div>
     </div>
 </div>
@@ -580,13 +642,21 @@
 <!-- ===== PAGE: HOME ===== -->
 <div class="page active" id="page-home">
     <div class="page-inner">
+
+        <!-- COLLAPSIBLE NEWS BOX -->
         <div class="news-box">
-            <div class="news-label">Recent News</div>
-            <ul class="news-list">
-                <li><span class="news-date">Mar 2026</span> Joined <b>NUS</b> as a Research Assistant to Prof. <a href="https://yumenghou.com/">Yumeng Hou</a>. Focusing on VLM-driven dataset creation for historical illustrations.</li>
-                <li><span class="news-date">Feb 2026</span> First-author paper accepted by <b>DiGRA 2026</b>.</li>
-                <li><span class="news-date">Nov 2025</span> Poster accepted at the <b>4th Frontiers of OR & AI Workshop</b>, Peking University (Shenzhen).</li>
-            </ul>
+            <div class="news-label" onclick="toggleNews(this)">
+                Recent News
+                <span class="news-toggle-icon">▼</span>
+            </div>
+            <div class="news-body" id="news-body">
+                <ul class="news-list">
+                    <li><span class="news-date">Apr 2026</span> Two papers accepted in one day: <b>IC2S2 2026</b> (Parallel Talk, Burlington, Vermont 🇺🇸) and <b>SEASIA 2026</b> (NTU Singapore 🇸🇬).</li>
+                    <li><span class="news-date">Mar 2026</span> Joined <b>NUS</b> as a Research Assistant to Prof. <a href="https://yumenghou.com/">Yumeng Hou</a>. Focusing on VLM-driven dataset creation for historical illustrations.</li>
+                    <li><span class="news-date">Feb 2026</span> First-author paper accepted by <b>DiGRA 2026</b>.</li>
+                    <li><span class="news-date">Nov 2025</span> Poster accepted at the <b>4th Frontiers of OR & AI Workshop</b>, Peking University (Shenzhen).</li>
+                </ul>
+            </div>
         </div>
 
         <h2 class="section-title">About</h2>
@@ -621,85 +691,77 @@
         <div class="exp-category">Research</div>
 
         <div class="exp-item">
-            <img class="exp-logo" src="https://www.google.com/s2/favicons?domain=hkust-gz.edu.cn&sz=64" alt="HKUST(GZ)">
-            <div class="exp-content">
+            <div class="exp-header">
                 <div class="exp-role">Research Assistant</div>
-                <div class="exp-org">HKUST(Guangzhou) — PGSC Laboratory</div>
                 <div class="exp-period">Apr – Oct 2025</div>
-                <div class="exp-desc">Built structured databases of sustainability policies and carbon metrics for 20+ countries using Python and Pandas; developed automated statistical framework reducing data error rate from 32% to 8%.</div>
             </div>
+            <div class="exp-org">HKUST(Guangzhou) — PGSC Laboratory</div>
+            <div class="exp-desc">Built structured databases of sustainability policies and carbon metrics for 20+ countries using Python and Pandas; developed automated statistical framework reducing data error rate from 32% to 8%.</div>
         </div>
 
         <div class="exp-item">
-            <img class="exp-logo" src="https://www.google.com/s2/favicons?domain=ouc.edu.cn&sz=64" alt="OUC">
-            <div class="exp-content">
+            <div class="exp-header">
                 <div class="exp-role">Research Assistant</div>
-                <div class="exp-org">Ocean University of China — Institute of Public Safety and Risk Governance</div>
                 <div class="exp-period">2023 – 2025</div>
-                <div class="exp-desc">Developed ML-based risk analysis models for public safety scenarios using Python (Scikit-learn, XGBoost); built classification and prediction pipelines for risk assessment and early warning systems.</div>
             </div>
+            <div class="exp-org">Ocean University of China — Institute of Public Safety and Risk Governance</div>
+            <div class="exp-desc">Developed ML-based risk analysis models for public safety scenarios using Python (Scikit-learn, XGBoost); built classification and prediction pipelines for risk assessment and early warning systems.</div>
         </div>
 
         <div class="exp-item">
-            <img class="exp-logo" src="https://www.google.com/s2/favicons?domain=cufe.edu.cn&sz=64" alt="CUFE">
-            <div class="exp-content">
+            <div class="exp-header">
                 <div class="exp-role">Research Assistant</div>
-                <div class="exp-org">CUFE — Sustainable Guidelines Research Center</div>
                 <div class="exp-period">May – Aug 2023</div>
-                <div class="exp-desc">Integrated 300+ county-level climate simulation datasets using Python and SQL; published 4 literature reviews on climate risk-food security nexus supporting two policy briefs.</div>
             </div>
+            <div class="exp-org">CUFE — Sustainable Guidelines Research Center</div>
+            <div class="exp-desc">Integrated 300+ county-level climate simulation datasets using Python and SQL; published 4 literature reviews on climate risk-food security nexus supporting two policy briefs.</div>
         </div>
 
         <div class="exp-item">
-            <img class="exp-logo" src="https://www.google.com/s2/favicons?domain=dukekunshan.edu.cn&sz=64" alt="DKU">
-            <div class="exp-content">
+            <div class="exp-header">
                 <div class="exp-role">Research Volunteer</div>
-                <div class="exp-org">Duke Kunshan University — Sustainable Development Laboratory</div>
                 <div class="exp-period">Aug – Oct 2023</div>
-                <div class="exp-desc">Processed 500+ infrared camera images identifying 12 wild animal species with 92% accuracy; mapped wildlife distribution via GIS tools, quantifying correlations between human activity and species presence.</div>
             </div>
+            <div class="exp-org">Duke Kunshan University — Sustainable Development Laboratory</div>
+            <div class="exp-desc">Processed 500+ infrared camera images identifying 12 wild animal species with 92% accuracy; mapped wildlife distribution via GIS tools, quantifying correlations between human activity and species presence.</div>
         </div>
 
         <div class="exp-category">Industry</div>
 
         <div class="exp-item">
-            <img class="exp-logo" src="https://www.google.com/s2/favicons?domain=bilibili.com&sz=64" alt="Bilibili">
-            <div class="exp-content">
+            <div class="exp-header">
                 <div class="exp-role">Strategy Product Intern</div>
-                <div class="exp-org">Bilibili — Data Strategy Group</div>
                 <div class="exp-period">Apr – Jun 2025</div>
-                <div class="exp-desc">Designed behaviour-tagging system using SQL clustering to segment high-value user cohorts; built data-driven retention interventions improving repurchase rates by 12%.</div>
             </div>
+            <div class="exp-org">Bilibili — Data Strategy Group</div>
+            <div class="exp-desc">Designed a behaviour-tagging system using SQL clustering to identify and segment high-value user cohorts; developed data-driven retention strategies to support subscription growth.</div>
         </div>
 
         <div class="exp-item">
-            <img class="exp-logo" src="https://www.google.com/s2/favicons?domain=tencent.com&sz=64" alt="Tencent">
-            <div class="exp-content">
+            <div class="exp-header">
                 <div class="exp-role">Product Planning Intern</div>
-                <div class="exp-org">Tencent — Interactive Entertainment Group</div>
                 <div class="exp-period">Jul – Oct 2024</div>
-                <div class="exp-desc">Managed cross-department compliance project with data-driven resource allocation via dashboards; delivered two days early with DAU exceeding summer target by 16%.</div>
             </div>
+            <div class="exp-org">Tencent — Interactive Entertainment Group</div>
+            <div class="exp-desc">Led product planning for the in-game commerce system of <em>Delta Force</em>; coordinated cross-department compliance workflows and managed resource allocation through data dashboards.</div>
         </div>
 
         <div class="exp-item">
-            <img class="exp-logo" src="https://www.google.com/s2/favicons?domain=weibo.com&sz=64" alt="Weibo">
-            <div class="exp-content">
+            <div class="exp-header">
                 <div class="exp-role">ACGN Operation Intern</div>
-                <div class="exp-org">Sina Weibo</div>
                 <div class="exp-period">Oct 2023 – Jun 2024</div>
-                <div class="exp-desc">Led behavioural analysis of ACGN communities using data analytics, boosting daily interactions by 18%; coordinated AI commenting robot development, increasing group activity by 22%.</div>
             </div>
+            <div class="exp-org">Sina Weibo</div>
+            <div class="exp-desc">Conducted behavioural analysis of ACGN communities to inform content operations strategy; coordinated development of an AI-assisted engagement tool to increase community activity.</div>
         </div>
 
         <div class="exp-item">
-            <img class="exp-logo" src="https://www.google.com/s2/favicons?domain=herogames.com&sz=64" alt="Hero Games">
-            <div class="exp-content">
+            <div class="exp-header">
                 <div class="exp-role">Operation Intern</div>
-                <div class="exp-org">Hero Games — Nebula Business Unit</div>
                 <div class="exp-period">Jun – Sep 2023</div>
-                <div class="exp-desc">Ensured game privacy policy compliance with legal requirements; flagged potential legal risks and coordinated cross-team resolution.</div>
             </div>
+            <div class="exp-org">Hero Games — Nebula Business Unit</div>
+            <div class="exp-desc">Reviewed game privacy policies for regulatory compliance; identified potential legal risks and coordinated cross-team resolution.</div>
         </div>
     </div>
 </div>
@@ -711,6 +773,18 @@
         <div class="section-divider"></div>
 
         <div class="pub-category">Peer-Reviewed Conference Papers</div>
+
+        <div class="pub-item">
+            <div class="pub-title">Governing Platform Entry: ASEAN States and the Politics of Chinese Esports Infrastructure</div>
+            <div class="pub-venue">SEASIA 2026 — 6th Consortium for Southeast Asian Studies in Asia Biennial Conference, NTU Singapore</div>
+            <div class="pub-authors"><span class="me">Shuo Wang</span>, Bin Yi Yang</div>
+        </div>
+
+        <div class="pub-item">
+            <div class="pub-title">Alone in the Crowd? Urban Population Density and Loneliness Expression on Chinese Social Media</div>
+            <div class="pub-venue">IC2S2 2026 — Parallel Talk, Burlington, Vermont</div>
+            <div class="pub-authors"><span class="me">Shuo Wang</span>, Xue Wang*</div>
+        </div>
 
         <div class="pub-item">
             <div class="pub-title">Label Offensive and Defensive in Interest-Based Battlefields: Identity Politics and Public Opinion Polarization in China's ACG Communities</div>
@@ -731,13 +805,13 @@
         <div class="pub-item">
             <div class="pub-title">Who Decides What's Toxic? How Player Identity Shapes Social Perception of Toxicity in Online Game Communities</div>
             <div class="pub-venue">Submitted to NLPercep @ ACL 2026</div>
-            <div class="pub-authors"><span class="me">Shuo Wang</span>, <a href="http://siapa.ouc.edu.cn/2021/0827/c18177a486641/page.htm" target="_blank">Xue Wang*</a></div>
+            <div class="pub-authors"><span class="me">Shuo Wang</span>, Xue Wang*</div>
         </div>
 
         <div class="pub-item">
             <div class="pub-title">"Dead Game Walking": Predicting Player Retention in Live Service Games from Community Sentiment Signals</div>
             <div class="pub-venue">Submitted to FDG 2026</div>
-            <div class="pub-authors"><span class="me">Shuo Wang</span>, <a href="http://siapa.ouc.edu.cn/2021/0827/c18177a486641/page.htm" target="_blank">Xue Wang*</a></div>
+            <div class="pub-authors"><span class="me">Shuo Wang</span>, Xue Wang*</div>
         </div>
     </div>
 </div>
@@ -749,21 +823,19 @@
         <div class="subsection-divider"></div>
 
         <div class="teaching-item">
-            <img class="teaching-logo" src="https://www.google.com/s2/favicons?domain=ouc.edu.cn&sz=64" alt="OUC">
-            <div class="teaching-content">
+            <div class="teaching-header">
                 <div class="teaching-course">Academic English</div>
-                <div class="teaching-role">Teaching Assistant · Ocean University of China</div>
                 <div class="teaching-period">Winter 2024</div>
             </div>
+            <div class="teaching-role">Teaching Assistant · Ocean University of China</div>
         </div>
 
         <div class="teaching-item">
-            <img class="teaching-logo" src="https://www.google.com/s2/favicons?domain=ouc.edu.cn&sz=64" alt="OUC">
-            <div class="teaching-content">
+            <div class="teaching-header">
                 <div class="teaching-course">Logic</div>
-                <div class="teaching-role">Teaching Assistant · Ocean University of China</div>
                 <div class="teaching-period">Spring 2022</div>
             </div>
+            <div class="teaching-role">Teaching Assistant · Ocean University of China</div>
         </div>
 
         <div class="awards-section">
@@ -824,7 +896,7 @@
         <div class="section-divider"></div>
         <div class="blog-placeholder">
             <p>Writing is on its way. Stay tuned.</p>
-            <!-- TODO: Replace '#' with your Substack URL once ready, e.g. https://yourname.substack.com -->
+            <!-- TODO: Replace '#' with your Substack URL once ready -->
             <!--
             <a href="#" target="_blank">Read on Substack</a>
             -->
@@ -855,6 +927,11 @@ function showPage(pageId) {
     });
     document.querySelector('.nav-links').classList.remove('open');
     window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function toggleNews(label) {
+    label.classList.toggle('collapsed');
+    document.getElementById('news-body').classList.toggle('collapsed');
 }
 </script>
 
